@@ -82,7 +82,7 @@ public class BagliList {
 //	}
 	
 	
-	public void insertDoubly(int value ) {
+	public void insertDoubly (int value ) {
 		Node node= newNode(value); // yeni node oluştu
 		
 		
@@ -188,6 +188,7 @@ public class BagliList {
 	
 	public void show() { // yadirma islemi hem gidis hem donus olarak yazdiriyoruz ki bakalim sonraki ve onceki baglari dogru mu yaptik 
 		Node x =head;
+		
 		while(x.next!=null) {// next gore yazdiriyoruz 
 			System.out.println(x.value);
 			x=x.next;

@@ -1,41 +1,43 @@
 package address;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import account.User;
 
 public class AddressManager {
 	private String addres;
-	
+	private User user;
 	public AddressManager() {
 		
 	}
 	
 	//Address[] AddressListe;
 	
-public static String ekleDizisi(ArrayList<Address> addressManger) {
+public static User ekleAddresDizisi(User user,Address address) {
+	  if (user != null) {
+          if (user.getAdressList().size() == 0) {
+              ArrayList<Address> addressArrayList = new ArrayList<>();
+              addressArrayList.add(address);
+              user.setAdressList(addressArrayList);
+          } else {
+              user.getAdressList();
+          }
+      }
+      return user;
 	
-	String x="";
-	for(Address addressFor:addressManger) {
-		
-	x+=addressFor.Addresses(addressManger);
-		
-		
-	}
-		return x;
+	
 	
 }
-public static String cikarDizisi(ArrayList<Address> addressManger) {
+public static User cikarAddresDizisi(User user,Address address) {
 	
-	String x="";
-	for(Address addressFor:addressManger) {
-		
-	x=addressFor.Addresses(addressManger);
-	
-		
-		
-	}
-		return x;
+	  if (user != null) {
+          if (user.getAdressList().size() > 0) {
+              user.getAdressList().remove(address);
+          }
+      }
+      return user;
 	
 }
 
