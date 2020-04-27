@@ -17,7 +17,7 @@ import address.BusinessAddress;
 import address.HomeAddress;
 import insurance.CarInsurance;
 import insurance.Insurance;
-import soru2.BagliList;
+import soru2.bagliList.BagliList;
 import userAccount.Enterprise;
 import userAccount.Individual;
 
@@ -25,27 +25,31 @@ public class Main {
 	public static Scanner s = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		int question=0;
 		// TODO Auto-generated method stub
-		System.out.println("Hangi soru istiyorsunuz \n çıkmak için 3");
+		while (question!=3) {
+			System.out.println(" which questions do you want \n 1.Insurance\n 2.GenericList\n exit 3");
 
-		int question = s.nextInt();
-		switch (question) {
+			 question = s.nextInt();
+			switch (question) {
 
-		case 1:
-			login();
-			break;
+			case 1:
+				login();
+				break;
 
-		case 2:
-			myList();
-			break;
+			case 2:
+				myList();
+				break;
 
-		case 3:
-			break;
+			case 3:
+				System.out.println("log out");
+				break;
 
-		default:
-			System.out.println("yanlış sayı giriniz ");
-			break;
+			default:
+				System.out.println("yanlış sayı giriniz ");
+				break;
 
+			}
 		}
 
 //		ArrayList<Address> habib1 =new ArrayList<Address>();
@@ -61,14 +65,14 @@ public class Main {
 
 	private static void yazdirAccount(TreeSet<Account> accountDizi) {
 		for (Account arr : accountDizi) {
-			System.out.print(arr.getUser().getName() + " " + arr.getAccountList().size()+" ");
+			System.out.print(arr.getUser().getName() + " " + arr.getAccountList().size() + " ");
 			System.out.println(arr.getInsurance() + " " + arr.getAuthenticationStatus().name());
 		}
 	}
 
 	private static void yazdirUser(User userBilgileri) {
 
-		System.out.print(userBilgileri.getAge() + " " + userBilgileri.getEmail()+" ");
+		System.out.print(userBilgileri.getAge() + " " + userBilgileri.getEmail() + " ");
 		System.out.println(userBilgileri.getName() + " " + userBilgileri.getSurname());
 	}
 
@@ -98,10 +102,11 @@ public class Main {
 		} else if (type.equals("bireysel")) {
 			// currentUser.setAdressList(createAddress(type));
 			newUser.setAdressList(createAddress(type));
-			newUser.setAge(14);
-			newUser.setEmail("habibdbbagh@live.com");
-			newUser.setSurname("bireysel");
 			newUser.setName("habib1");
+			newUser.setEmail("habibdbbagh@live.com");
+			newUser.setAge(14);
+			newUser.setSurname("bireysel");
+
 		}
 		yazdirUser(newUser);
 		return newUser;
@@ -131,21 +136,20 @@ public class Main {
 	}
 
 	private static void login() {
-		
-	
-		System.out.print("e-posta :");
+
+		System.out.print("email :");
 		String email = s.nextLine();
 		s.nextLine();
-		System.out.print("şifre :");
+		System.out.print(" password :");
 		String password = s.nextLine();
 		AccountManager accountManager = new AccountManager(fillAccount());
-		Account account=accountManager.login("habibdbbagh@live.com", password);
+		Account account = accountManager.login("habibdbbagh@live.com", password);
 //		if (email.equals(account.getUser().getEmail())) {
 //			System.out.println("user login");
 //		}else {
 //			System.out.println("user Fail  ");
 //		}
-		
+
 	}
 
 	public static void myList() {
@@ -161,16 +165,16 @@ public class Main {
 
 		// Çift Yönlü
 
-		System.out.println("Siz  liste doldurmak istiyormusunuz? y/n");
+		System.out.println("Do you want put  the variable in myList? y/n");
 		s.nextLine();// String bazi hatalari var o yuzden iki kere yazdirmak lazim
 		String list = s.nextLine();
 
 		if (list.equalsIgnoreCase("y")) {
-			System.out.println("list boyutu ?");
+			System.out.println("MyList size?");
 			int size = s.nextInt();
 
 			for (int i = 0; i < size; i++) {
-				System.out.println("list eleman bekliyor");
+				System.out.println("myList wait elements");
 				myList.insertDoubly(s.nextInt());
 			}
 			myList.show();
@@ -187,12 +191,30 @@ public class Main {
 
 			myList.show(); // yazdırma
 
-			System.out.println("List size");
-			System.out.println(myList.sizeDoubly());// listenin size
-
-			System.out.println("Get The value By index");
-			System.out.println(myList.getDoubly(2));// istediğimiz eleman valuesu getir
+			
 		}
+		
+		StringBuilder stringBuilder=new StringBuilder();
+		stringBuilder.append("List size ");
+		stringBuilder.append(" \n");
+		stringBuilder.append(myList.sizeDoubly());
+		stringBuilder.append(" \n");
+		stringBuilder.append("Get The value By index {1}");
+		stringBuilder.append(" ");
+		stringBuilder.append(" \n");
+		stringBuilder.append(myList.getDoubly(1));
+		stringBuilder.append(" \n");
+		stringBuilder.append("you can do also insertAtDoubly(index, value )");
+		
+		stringBuilder.append(" ");
+		System.out.println(stringBuilder.toString());
+//		System.out.println("List size");
+//		System.out.println(myList.sizeDoubly());// listenin size
+//
+//		System.out.println("Get The value By index {1}");
+//		System.out.println(myList.getDoubly(1));// istediğimiz eleman valuesu getir
+//		System.out.println("you can do also insertAtDoubly(index, value )");
+//		System.out.println();
 	}
 
 }
